@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { Neo4jModule } from './neo4j/neo4j.module';
 import { RedisModule } from './redis/redis.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { RedisModule } from './redis/redis.module';
     RedisModule,
     Neo4jModule,
     AuthModule,
+    UsersModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
