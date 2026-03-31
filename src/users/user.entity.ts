@@ -3,8 +3,10 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Quartier } from '../quartiers/quartier.entity';
 
 export enum UserRole {
   RESIDENT = 'resident',
@@ -38,6 +40,11 @@ export class User {
 
   @Column({ default: false })
   isTotpEnabled: boolean;
+
+  @ManyToOne(() => Quartier, (quartier) => quartier.members, {
+    nullable: true,
+  })
+  quartier: Quartier;
 
   @CreateDateColumn()
   createdAt: Date;
