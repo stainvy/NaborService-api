@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { ChatModule } from './chat/chat.module';
 import { Neo4jModule } from './neo4j/neo4j.module';
 import { RedisModule } from './redis/redis.module';
 import { QuartiersModule } from './quartiers/quartiers.module';
@@ -18,6 +19,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
     QuartiersModule,
+    ChatModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
