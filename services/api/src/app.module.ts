@@ -8,7 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './chat/chat.module';
 import { Neo4jModule } from './neo4j/neo4j.module';
 import { RedisModule } from './redis/redis.module';
-import { QuartiersModule } from './quartiers/quartiers.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -18,7 +17,6 @@ import { UsersModule } from './users/users.module';
     Neo4jModule,
     AuthModule,
     UsersModule,
-    QuartiersModule,
     ChatModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],

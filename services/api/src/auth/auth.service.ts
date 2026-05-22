@@ -45,6 +45,7 @@ export class AuthService {
     const user = this.userRepository.create({
       email: dto.email,
       firstName: dto.firstName,
+      lastName: dto.lastName,
       passwordHash,
     });
     await this.userRepository.save(user);
@@ -104,7 +105,6 @@ export class AuthService {
       throw new UnauthorizedException('Code TOTP invalide');
     }
 
-    user.isTotpEnabled = true;
     await this.userRepository.save(user);
 
     return { message: 'MFA activé avec succès' };

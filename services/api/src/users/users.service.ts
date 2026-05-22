@@ -30,9 +30,11 @@ export class UsersService {
         'id',
         'email',
         'firstName',
+        'lastName',
         'role',
-        'isActive',
-        'isTotpEnabled',
+        'visibility',
+        'bio',
+        'locale',
         'createdAt',
       ],
     });
