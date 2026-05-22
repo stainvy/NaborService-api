@@ -4,13 +4,13 @@ COPY package*.json ./
 
 FROM base AS dev
 ENV NODE_ENV=development
-RUN npm ci
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "start:dev"]
 
 FROM base AS build
-RUN npm ci
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
 COPY . .
 RUN npm run build
 RUN npm prune --omit=dev

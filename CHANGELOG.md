@@ -8,6 +8,13 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### Added
+- 24 entités TypeORM PostgreSQL conformes au CDC section 3.1 (users, social, messaging, listings, events, polls, incidents)
+- 16 types ENUM PostgreSQL centralisés dans `src/common/enums.ts`
+- 7 modules NestJS domaine (SocialModule, MessagingModule, ListingsModule, EventsModule, PollsModule, IncidentsModule)
+- Configuration TypeORM extraite dans `src/database/postgres.config.ts` avec `autoLoadEntities: true`
+- Tests unitaires de métadonnées TypeORM vérifiant la conformité schéma (colonnes, types, index, CHECK, relations)
+- Cahier des charges technique (`cahier_des_charges_nabor.md`) ajouté au repo
+- Spec Kiro complète pour les entités PostgreSQL (`.kiro/specs/postgresql-entities/`)
 - Structure monorepo : `services/api/` (NestJS) et `services/dsl/` (FastAPI + PLY)
 - Docker multi-service : `compose.yml`, `compose.dev.yml`, `compose.prod.yml`
 - Dockerfiles dédiés : `docker/api/`, `docker/dsl/`, `docker/postgres/`
@@ -16,13 +23,18 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - `.dockerignore` pour optimiser les builds Docker
 
 ### Changed
+- Restructuration `src/` : modules métier dans `src/modules/`, configs DB dans `src/database/`, enums dans `src/common/`
+- Entité User mise à jour : suppression colonnes obsolètes, ajout index CDC, import enums centralisés
+- `auth.service.ts` : migration bcrypt → argon2 (conformité CDC), correction null check TOTP
+- Dockerfile API : fallback `npm install` quand `package-lock.json` absent
 - PostgreSQL 16 → 17 (support pg_uuidv7)
-- Restructuration du projet : code NestJS déplacé de la racine vers `services/api/`
 - `docker-compose.yml` renommé en `compose.yml` (convention Docker Compose v2)
 
 ### Removed
 - `docker-compose.yml` (remplacé par `compose.yml`)
 - `test-chat.html` (fichier de test temporaire)
+- Module `chat/` (remplacé par `MessagingModule` avec entités CDC)
+- Anciens répertoires `src/auth/`, `src/users/`, `src/neo4j/`, `src/redis/` (déplacés vers nouvelle structure)
 
 ---
 
