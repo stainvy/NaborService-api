@@ -13,6 +13,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - Pre-save hooks Mongoose validant la taille BSON cumulée (ex. photos ≤ 12 Mo, pièces jointes ≤ 13,5 Mo, événements ≤ 13,5 Mo) avec propagation d'erreurs ValidationError détaillées.
 - Module global `MongoSchemasModule` enregistrant et exportant tous les modèles pour injection.
 - Tests unitaires Jest complets et tests de propriétés `fast-check` robustes pour la conformité et la sécurité des schémas.
+
 - Module d'authentification NestJS :
   - **`TokenService`** : émission de JWT HS256 (15 min) et tokens de rafraîchissement opaques de 64 caractères (base64url) stockés dans Redis.
   - **`SessionService`** : gestion et audit des sessions actives (`UserSession`) dans PostgreSQL avec support de révocation unitaire/globale.
