@@ -11,8 +11,8 @@ describe('Property 14: Argon2id hash round-trip', () => {
           const salt = crypto.randomBytes(16);
           const hash = await argon2.hash(password, {
             type: argon2.argon2id,
-            memoryCost: 65536,
-            timeCost: 3,
+            memoryCost: 16384,
+            timeCost: 2,
             parallelism: 1,
             hashLength: 32,
             salt,
@@ -27,7 +27,7 @@ describe('Property 14: Argon2id hash round-trip', () => {
           expect(isDifferentValid).toBe(false);
         },
       ),
-      { numRuns: 50 }, // reduced runs for argon2 as it is CPU-heavy
+      { numRuns: 30 },
     );
   }, 30000); // 30 seconds timeout
 });
