@@ -14,6 +14,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
   - **Création atomique à l'inscription** : intégration dans `AuthService.register()` d'une insertion transactionnelle par défaut pour garantir la conformité dès la création du compte.
   - **Spécifications techniques** : mise à jour de la section 3.1 du `cahier_des_charges_nabor.md` documentant le schéma SQL et les règles de conformité RGPD.
   - **Tests robustes Jest et Fast-Check** : suite de tests unitaires d'edge cases et tests de propriétés fast-check (100 runs chacun) prouvant mathématiquement le respect des opt-outs par les services consommateurs (projections d'interactions Neo4j, emails non essentiels, flux de découverte).
+
 - Implémentation de la couche d'infrastructure et des services graphiques Neo4j sous `src/database/neo4j/` conformes aux spécifications CDC :
   - **`Neo4jService`** : service générique d'exécution de requêtes Cypher résilient avec gestion automatique de fermeture des sessions et mécanisme de retry exponentiel (délais `[1000, 5000, 30000]` ms) en cas d'erreurs transitoires.
   - **`Neo4jInitService`** : initialisation automatique de 10 index de base de données (8 RANGE, 2 RANGE composites, 1 index POINT spatial sur le centroid) avec gestion gracieuse des index existants (skip) et fail-fast au démarrage.
