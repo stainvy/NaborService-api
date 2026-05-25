@@ -19,7 +19,7 @@ describe('Social Network Entities — TypeORM Metadata', () => {
       entities: [User, ChatGroup, Listing, ListingCategory, Follow, Friendship, UserBlock, UserSwipe],
       synchronize: false,
     });
-    (dataSource as unknown as { buildMetadatas(): void }).buildMetadatas();
+    dataSource.buildMetadatas();
   });
 
   describe('Follow entity', () => {

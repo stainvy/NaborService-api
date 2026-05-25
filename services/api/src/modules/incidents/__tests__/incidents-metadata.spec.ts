@@ -13,7 +13,7 @@ describe('Incidents Domain — TypeORM Metadata', () => {
       entities: [Incident, User],
       synchronize: false,
     });
-    (dataSource as unknown as { buildMetadatas(): void }).buildMetadatas();
+    dataSource.buildMetadatas();
   });
 
   describe('Incident entity', () => {

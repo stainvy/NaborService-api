@@ -24,7 +24,7 @@ describe('Listings & Payments Entities — TypeORM Metadata', () => {
       ],
       synchronize: false,
     });
-    (dataSource as unknown as { buildMetadatas(): void }).buildMetadatas();
+    dataSource.buildMetadatas();
   });
 
   // ─── ListingCategory (Requirement 5.1) ───────────────────────────────────────
@@ -266,7 +266,7 @@ describe('Listings & Payments Entities — TypeORM Metadata', () => {
       const hasUnique =
         metadata.uniques.some((u) =>
           u.columns.some((c) => c.databaseName === 'stripe_session_id'),
-        ) || (col as { isUnique?: boolean }).isUnique === true;
+        ) || col!.isUnique === true;
       expect(hasUnique).toBe(true);
     });
 
@@ -281,7 +281,7 @@ describe('Listings & Payments Entities — TypeORM Metadata', () => {
       const hasUnique =
         metadata.uniques.some((u) =>
           u.columns.some((c) => c.databaseName === 'stripe_payment_intent'),
-        ) || (col as { isUnique?: boolean }).isUnique === true;
+        ) || col!.isUnique === true;
       expect(hasUnique).toBe(true);
     });
 

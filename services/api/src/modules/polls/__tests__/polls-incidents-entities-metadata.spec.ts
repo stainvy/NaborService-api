@@ -22,7 +22,7 @@ describe('Polls & Incidents Entities — TypeORM Metadata', () => {
       entities: [Poll, PollOption, Vote, Incident, User],
       synchronize: false,
     });
-    (dataSource as unknown as { buildMetadatas(): void }).buildMetadatas();
+    dataSource.buildMetadatas();
   });
 
   // ─── Poll ─────────────────────────────────────────────────────────────
